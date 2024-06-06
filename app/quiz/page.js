@@ -23,9 +23,15 @@ const Quiz = () => {
   }, []);
 
   const handleAnswerClick = (option) => {
+    const currentQuestion = questions[currentQuestionIndex];
     setUserAnswers([
       ...userAnswers,
-      { question: questions[currentQuestionIndex].question, answer: option },
+      {
+        question: currentQuestion.question,
+        category: currentQuestion.category,
+        correctAnswer: currentQuestion.correctAnswer,
+        userAnswer: option,
+      },
     ]);
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
