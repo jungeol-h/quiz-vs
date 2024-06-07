@@ -10,7 +10,7 @@ const Quiz = () => {
   const [showAnswer, setShowAnswer] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
   const isQuizCompleted = useRef(false);
 
@@ -22,16 +22,11 @@ const Quiz = () => {
         .sort(() => 0.5 - Math.random())
         .slice(0, 20);
       setQuestions(shuffledQuestions);
+      setIsLoading(false);
     };
 
     fetchQuestions();
   }, []);
-
-  useEffect(() => {
-    if (isQuizCompleted.current) {
-      sendQuizData(userAnswers);
-    }
-  }, [userAnswers]);
 
   const handleAnswerClick = (option) => {
     const currentQuestion = questions[currentQuestionIndex];
@@ -63,23 +58,24 @@ const Quiz = () => {
           setSelectedOption(null);
           setCurrentQuestionIndex(currentQuestionIndex + 1);
         },
-        isCorrectAnswer ? 100 : 100 //TODO 시간 조정
+        isCorrectAnswer ? 100 : 100
       );
     } else {
       isQuizCompleted.current = true;
       setTimeout(
         () => {
-          setLoading(true); // 마지막 문제를 푼 후 로딩 상태로 전환
-          setShowAnswer(false);
-          setSelectedOption(null);
+          setIsLoading(true);
+          sendQuizData(updatedAnswers);
         },
-        isCorrectAnswer ? 1000 : 2000
+        isCorrectAnswer ? 100 : 100
       );
     }
   };
-
   const sendQuizData = async (updatedAnswers) => {
     try {
+      const correctCount = updatedAnswers.filter(
+        (answer) => answer.isCorrect
+      ).length;
       const response = await fetch(
         "https://hook.eu2.make.com/x845bxmr5m361he31t4qx58weabrq2hp",
         {
@@ -87,55 +83,45 @@ const Quiz = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ answers: updatedAnswers }),
+          body: JSON.stringify({
+            answers: updatedAnswers,
+            correctCount: correctCount,
+            totalQuestions: updatedAnswers.length,
+          }),
         }
       );
       const data = await response.json();
-      localStorage.setItem("quizResults", JSON.stringify(data));
+      localStorage.setItem(
+        "quizResults",
+        JSON.stringify({
+          ...data,
+          correctCount: correctCount,
+          totalQuestions: updatedAnswers.length,
+        })
+      );
       router.replace("/results");
     } catch (error) {
       console.error("Error sending quiz data:", error);
-      router.replace("/results");
+      // 에러 처리 로직 추가
+      setIsLoading(false);
     }
   };
 
-  if (questions.length === 0) return <div>Loading...</div>;
-
-  const currentQuestion = questions[currentQuestionIndex];
-  const correctOption =
-    currentQuestion.options[currentQuestion.correctAnswer - 1];
-
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="min-h-screen flex flex-col justify-center items-center">
         <div className="w-full max-w-md p-4 text-center">
-          <div>결과를 처리하고 있습니다...</div>
-          <div className="mt-4">
-            <svg
-              className="animate-spin h-8 w-8 text-blue-500"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              ></circle>
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-              ></path>
-            </svg>
-          </div>
+          <div>Loading...</div>
         </div>
       </div>
     );
   }
+
+  if (questions.length === 0) return null;
+
+  const currentQuestion = questions[currentQuestionIndex];
+  const correctOption =
+    currentQuestion.options[currentQuestion.correctAnswer - 1];
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
