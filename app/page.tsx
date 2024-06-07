@@ -1,11 +1,20 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Player } from "@lottiefiles/react-lottie-player";
+import dynamic from "next/dynamic";
+
 import { FaArrowRight } from "react-icons/fa";
 
+const Player = dynamic(
+  () =>
+    import("@lottiefiles/react-lottie-player").then((module) => module.Player),
+  {
+    ssr: false,
+  }
+);
+
 export default function Home() {
-  const [isClient, setIsClient] = useState(false);
+  // const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     // 클라이언트 사이드에서만 로컬 스토리지 초기화
