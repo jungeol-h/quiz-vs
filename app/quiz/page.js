@@ -55,7 +55,7 @@ const Quiz = () => {
       setTimeout(
         () => {
           setShowAnswer(false);
-          setSelectedOption(null);
+          setSelectedOption(null); // 문제 전환 시 선택된 옵션 초기화
           setCurrentQuestionIndex(currentQuestionIndex + 1);
         },
         isCorrectAnswer ? 100 : 100
@@ -71,6 +71,7 @@ const Quiz = () => {
       );
     }
   };
+
   const sendQuizData = async (updatedAnswers) => {
     try {
       const correctCount = updatedAnswers.filter(
@@ -127,7 +128,12 @@ const Quiz = () => {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
       <div className="w-full max-w-md p-4">
-        <div className="mb-4 text-lg">{currentQuestion.question}</div>
+        <progress
+          className="progress progress-primary w-full mb-4"
+          value={(currentQuestionIndex + 1) * (100 / questions.length)}
+          max="100"
+        ></progress>
+        <div className="mb-4 text-lg ">{currentQuestion.question}</div>
         <div className="flex flex-col">
           {currentQuestion.options.map((option, index) => (
             <button
@@ -159,11 +165,6 @@ const Quiz = () => {
             )}
           </div>
         )}
-        <progress
-          className="progress progress-primary w-full mt-4"
-          value={(currentQuestionIndex + 1) * (100 / questions.length)}
-          max="100"
-        ></progress>
       </div>
     </div>
   );
