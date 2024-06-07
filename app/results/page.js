@@ -45,6 +45,7 @@ const Results = () => {
     totalQuestions > 0
       ? Math.round((correctAnswersCount / totalQuestions) * 100)
       : 0;
+
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
       {loading ? (
@@ -60,22 +61,33 @@ const Results = () => {
               </p>
               <p className="text-xl">등급: {grade}</p>
               <p className="text-xl">{nickname}</p>
-              <button
-                className="btn btn-primary mt-6"
-                onClick={() => {
-                  if (navigator.share) {
-                    navigator.share({
-                      title: "퀴즈 결과",
-                      text: `GPT도 틀린 문제를 ${score}점이나 맞힌 이 분을 이겨보세요!`,
-                      url: window.location.href,
-                    });
-                  } else {
-                    alert("공유 기능을 지원하지 않는 브라우저입니다.");
-                  }
-                }}
-              >
-                친구에게 자랑하기
-              </button>
+              <div className="flex flex-col items-center">
+                <button
+                  className="btn btn-secondary mt-4"
+                  onClick={() => {
+                    localStorage.removeItem("quizResults");
+                    router.push("/quiz");
+                  }}
+                >
+                  다시하기
+                </button>
+                <button
+                  className="btn btn-primary mt-6"
+                  onClick={() => {
+                    if (navigator.share) {
+                      navigator.share({
+                        title: "퀴즈 결과",
+                        text: `GPT도 틀린 문제를 ${score}점이나 맞힌 이 분을 이겨보세요!`,
+                        url: window.location.href,
+                      });
+                    } else {
+                      alert("공유 기능을 지원하지 않는 브라우저입니다.");
+                    }
+                  }}
+                >
+                  친구 도발하기
+                </button>
+              </div>
             </>
           ) : (
             <p className="text-xl">풀이한 문제가 없습니다.</p>
