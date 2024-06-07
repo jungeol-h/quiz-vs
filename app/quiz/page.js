@@ -7,6 +7,10 @@ const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
+  const [showAnswer, setShowAnswer] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [isCorrect, setIsCorrect] = useState(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const isQuizCompleted = useRef(false);
 
@@ -31,33 +35,51 @@ const Quiz = () => {
 
   const handleAnswerClick = (option) => {
     const currentQuestion = questions[currentQuestionIndex];
+    const correctOption =
+      currentQuestion.options[currentQuestion.correctAnswer - 1];
+    const isCorrectAnswer = option === correctOption;
+
+    setIsCorrect(isCorrectAnswer);
+
     const updatedAnswers = [
       ...userAnswers,
       {
         question: currentQuestion.question,
         category: currentQuestion.category,
-        correctAnswer: currentQuestion.correctAnswer,
+        correctAnswer: correctOption,
         userAnswer: option,
-        isCorrect: option === currentQuestion.correctAnswer,
+        isCorrect: isCorrectAnswer,
       },
     ];
 
     setUserAnswers(updatedAnswers);
+    setSelectedOption(option);
+    setShowAnswer(true);
 
     if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setTimeout(
+        () => {
+          setShowAnswer(false);
+          setSelectedOption(null);
+          setCurrentQuestionIndex(currentQuestionIndex + 1);
+        },
+        isCorrectAnswer ? 100 : 100 //TODO 시간 조정
+      );
     } else {
       isQuizCompleted.current = true;
+      setTimeout(
+        () => {
+          setLoading(true); // 마지막 문제를 푼 후 로딩 상태로 전환
+          setShowAnswer(false);
+          setSelectedOption(null);
+        },
+        isCorrectAnswer ? 1000 : 2000
+      );
     }
   };
 
   const sendQuizData = async (updatedAnswers) => {
     try {
-      const correctAnswersCount = updatedAnswers.filter(
-        (answer) => answer.isCorrect
-      ).length;
-      const score = Math.round((correctAnswersCount / questions.length) * 100);
-
       const response = await fetch(
         "https://hook.eu2.make.com/x845bxmr5m361he31t4qx58weabrq2hp",
         {
@@ -69,18 +91,51 @@ const Quiz = () => {
         }
       );
       const data = await response.json();
-      data.score = score;
       localStorage.setItem("quizResults", JSON.stringify(data));
-      router.push("/results");
+      router.replace("/results");
     } catch (error) {
       console.error("Error sending quiz data:", error);
-      router.push("/results");
+      router.replace("/results");
     }
   };
 
   if (questions.length === 0) return <div>Loading...</div>;
 
   const currentQuestion = questions[currentQuestionIndex];
+  const correctOption =
+    currentQuestion.options[currentQuestion.correctAnswer - 1];
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex flex-col justify-center items-center">
+        <div className="w-full max-w-md p-4 text-center">
+          <div>결과를 처리하고 있습니다...</div>
+          <div className="mt-4">
+            <svg
+              className="animate-spin h-8 w-8 text-blue-500"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
@@ -90,13 +145,33 @@ const Quiz = () => {
           {currentQuestion.options.map((option, index) => (
             <button
               key={index}
-              className="btn btn-outline mb-2"
+              className={`btn btn-outline mb-2 ${
+                showAnswer && option === correctOption ? "bg-green-500" : ""
+              } ${
+                showAnswer &&
+                option === selectedOption &&
+                option !== correctOption
+                  ? "bg-red-500"
+                  : ""
+              }`}
               onClick={() => handleAnswerClick(option)}
+              disabled={showAnswer}
             >
               {option}
             </button>
           ))}
         </div>
+        {showAnswer && (
+          <div className="mt-4">
+            {isCorrect ? (
+              <div className="text-green-500">정답입니다!</div>
+            ) : (
+              <div className="text-red-500">
+                오답입니다. 정답은 {correctOption} 입니다.
+              </div>
+            )}
+          </div>
+        )}
         <progress
           className="progress progress-primary w-full mt-4"
           value={(currentQuestionIndex + 1) * (100 / questions.length)}

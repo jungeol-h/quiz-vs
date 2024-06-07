@@ -1,19 +1,27 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Results = () => {
-  const [score, setScore] = useState(null);
+  const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
+  const [totalQuestions, setTotalQuestions] = useState(0);
   const [grade, setGrade] = useState(null);
   const [nickname, setNickname] = useState(null);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchResults = () => {
       const storedResults = localStorage.getItem("quizResults");
       if (storedResults) {
         const data = JSON.parse(storedResults);
-        setScore(data.score);
+        const userAnswers = data.answers || [];
+        const correctCount = userAnswers.filter(
+          (answer) => answer.isCorrect
+        ).length;
+        setCorrectAnswersCount(correctCount);
+        setTotalQuestions(userAnswers.length);
         setGrade(data.tier);
         setNickname(data.nickname);
       }
@@ -21,7 +29,23 @@ const Results = () => {
     };
 
     fetchResults();
-  }, []);
+
+    // Replace the current history state to disable back navigation
+    history.replaceState(null, "", location.href);
+
+    const handlePopState = (event) => {
+      event.preventDefault();
+      router.push("/"); // Redirect to home if back is attempted
+    };
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [router]);
+
+  const score = Math.round((correctAnswersCount / totalQuestions) * 100);
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
@@ -31,6 +55,9 @@ const Results = () => {
         <div className="text-center">
           <h2 className="text-4xl font-bold mb-4">결과</h2>
           <p className="text-2xl mb-2">점수: {score}점</p>
+          <p className="text-xl">
+            맞은 문제 수: {correctAnswersCount} / {totalQuestions}
+          </p>
           <p className="text-xl">등급: {grade}</p>
           <p className="text-xl">{nickname}</p>
           <button
