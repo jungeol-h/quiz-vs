@@ -127,7 +127,7 @@ const Quiz = () => {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
-      <div className="w-full max-w-md p-4">
+      <div className="w-full max-w-md">
         <progress
           className="progress progress-primary w-full mb-4"
           value={(currentQuestionIndex + 1) * (100 / questions.length)}

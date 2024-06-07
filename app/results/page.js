@@ -55,11 +55,6 @@ const Results = () => {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
-      <Head>
-        <meta property="og:image" content={ogImageUrl} />
-        <meta property="og:title" content={ogTitle} />
-        <meta property="og:description" content={ogDescription} />
-      </Head>
       {loading ? (
         <div className="text-center">
           <div className="spinner"></div>
@@ -69,7 +64,7 @@ const Results = () => {
         <div className="text-center">
           {totalQuestions > 0 ? (
             <>
-              <h2 className="text-4xl font-bold mb-8">🎉 퀴즈 결과 🎉</h2>
+              <h2 className="text-4xl font-bold mb-8 mt-8">🎉 퀴즈 결과 🎉</h2>
               <div className="bg-gray-800 p-8 rounded-lg shadow-lg">
                 <p className="text-3xl mb-1">
                   당신의 점수는 <br></br>
