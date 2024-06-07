@@ -100,7 +100,7 @@ const Results = () => {
                     if (navigator.share) {
                       navigator.share({
                         title: "퀴즈 결과",
-                        url: "https://gpt-quiz.vercel.app/",
+                        url: "https://quiz-vs.vercel.app/",
                       });
                     } else {
                       alert("공유 기능을 지원하지 않는 브라우저입니다.");
