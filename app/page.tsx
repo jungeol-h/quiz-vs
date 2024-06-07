@@ -1,22 +1,16 @@
 "use client";
 import { useEffect } from "react";
 import Link from "next/link";
-
-// Dynamically import the Player component
-// const Player = dynamic(
-//   () => import("@lottiefiles/react-lottie-player").then((mod) => mod.Player),
-//   { ssr: false }
-// );
 import { Player } from "@lottiefiles/react-lottie-player";
-
 export default function Home() {
   useEffect(() => {
     // 로컬 스토리지 초기화
     localStorage.removeItem("quizResults");
   }, []);
-
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
+      <h1 className="text-5xl font-bold mb-4">GPT 도장깨기</h1>
+
       <div className="mt-6">
         <Player
           autoplay
@@ -25,14 +19,12 @@ export default function Home() {
           style={{ height: "300px", width: "300px" }}
         />
       </div>
-      <h1 className="text-5xl font-bold">GPT 상식 대결</h1>
-      <p className="mt-4 text-xl">
-        GPT보다 똑똑한지 몇 문제나 맞힐 수 있으신가요?
-      </p>
-
+      <p className="mt-4 text-xl">GPT가 틀린 상식 문제들, 맞히실 수 있나요?</p>
       <Link href="/quiz">
         <button className="btn btn-primary mt-6">퀴즈 풀기</button>
       </Link>
+      <p className="text-sm mt-2">20문제 / 약 3분 소요</p>
+      {/* <p className="text-sm mt-2">정치 </p> */}
     </div>
   );
 }

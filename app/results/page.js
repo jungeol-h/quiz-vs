@@ -49,35 +49,51 @@ const Results = () => {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
       {loading ? (
-        <progress className="progress progress-primary w-full"></progress>
+        <div className="text-center">
+          <div className="spinner"></div>
+          <p className="text-xl mt-4">결과 로딩 중...</p>
+        </div>
       ) : (
         <div className="text-center">
           {totalQuestions > 0 ? (
             <>
-              <h2 className="text-4xl font-bold mb-4">결과</h2>
-              <p className="text-2xl mb-2">점수: {score}점</p>
-              <p className="text-xl">
-                맞은 문제 수: {correctAnswersCount} / {totalQuestions}
-              </p>
-              <p className="text-xl">등급: {grade}</p>
-              <p className="text-xl">{nickname}</p>
-              <div className="flex flex-col items-center">
+              <h2 className="text-4xl font-bold mb-8">🎉 퀴즈 결과 🎉</h2>
+              <div className="bg-gray-800 p-8 rounded-lg shadow-lg">
+                <p className="text-3xl mb-4">
+                  당신의 점수는 <strong>{score}점</strong>입니다!
+                </p>
+                <p className="text-xl mb-2">
+                  맞은 문제 수: <strong>{correctAnswersCount}</strong> /{" "}
+                  {totalQuestions}
+                </p>
+                <p className="text-2xl mb-4">
+                  <strong>{grade}</strong>등급
+                </p>
+                <p className="text-xl">🤖 한줄평: {nickname}</p>
+                <div className="mt-4 text-sm text-gray-400">
+                  <p>
+                    * 등급과 별명은 GPT가 정오답 문제를 기반으로 평가한
+                    결과입니다.
+                  </p>
+                </div>
+              </div>
+              <div className="mt-8">
                 <button
-                  className="btn btn-secondary mt-4"
+                  className="btn btn-secondary px-6 py-3 mr-4"
                   onClick={() => {
                     localStorage.removeItem("quizResults");
                     router.push("/quiz");
                   }}
                 >
-                  다시하기
+                  🔄 다시하기
                 </button>
                 <button
-                  className="btn btn-primary mt-6"
+                  className="btn btn-primary px-6 py-3"
                   onClick={() => {
                     if (navigator.share) {
                       navigator.share({
                         title: "퀴즈 결과",
-                        text: `GPT도 틀린 문제를 ${score}점이나 맞힌 이 분을 이겨보세요!`,
+                        text: `GPT도 틀린 문제를 ${score}점이나 맞힌 이 분을 이겨보세요! 👊`,
                         url: window.location.href,
                       });
                     } else {
@@ -85,17 +101,18 @@ const Results = () => {
                     }
                   }}
                 >
-                  친구 도발하기
+                  📢 친구 도발하기
                 </button>
               </div>
             </>
           ) : (
-            <p className="text-xl">풀이한 문제가 없습니다.</p>
+            <p className="text-2xl">풀이한 문제가 없습니다. 😢</p>
           )}
         </div>
       )}
     </div>
   );
+  // ...
 };
 
 export default Results;

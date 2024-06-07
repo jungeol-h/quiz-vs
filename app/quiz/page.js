@@ -111,7 +111,7 @@ const Quiz = () => {
     return (
       <div className="min-h-screen flex flex-col justify-center items-center">
         <div className="w-full max-w-md p-4 text-center">
-          <div>Loading...</div>
+          <div>상식 등급 분석중...</div>
         </div>
       </div>
     );

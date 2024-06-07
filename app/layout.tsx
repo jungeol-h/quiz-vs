@@ -10,7 +10,12 @@ interface Props {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        <div className="navbar bg-neutral text-neutral-content justify-center">
+          <a className="btn btn-ghost text-xl">GPT 상식 대결</a>
+        </div>
+        {children}
+      </body>
     </html>
   );
 }
