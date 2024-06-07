@@ -132,7 +132,7 @@ const Quiz = () => {
           {currentQuestion.options.map((option, index) => (
             <button
               key={index}
-              className={`btn btn-outline mb-2 ${
+              className={`btn btn-neutral mb-2 ${
                 showAnswer && option === correctOption ? "bg-green-500" : ""
               } ${
                 showAnswer &&

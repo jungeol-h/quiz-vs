@@ -105,8 +105,7 @@ const Results = () => {
                     if (navigator.share) {
                       navigator.share({
                         title: "퀴즈 결과",
-                        text: `GPT도 틀린 문제를 ${score}점이나 맞힌 이 분을 이겨보세요! 👊`,
-                        url: window.location.href,
+                        url: "https://gpt-quiz.vercel.app/",
                       });
                     } else {
                       alert("공유 기능을 지원하지 않는 브라우저입니다.");
