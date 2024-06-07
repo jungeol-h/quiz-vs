@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Head from "next/head";
 
 const Results = () => {
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
@@ -9,7 +10,7 @@ const Results = () => {
   const [grade, setGrade] = useState(null);
   const [nickname, setNickname] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [answers, setAnswers] = useState([]); // [question, correctAnswer, userAnswer, isCorrect
+  const [answers, setAnswers] = useState([]); // [question, correctAnswer, userAnswer, isCorrect]
   const router = useRouter();
 
   useEffect(() => {
@@ -48,8 +49,17 @@ const Results = () => {
       ? Math.round((correctAnswersCount / totalQuestions) * 100)
       : 0;
 
+  const ogImageUrl = "이미지URL"; // 동적으로 설정할 수 있습니다.
+  const ogTitle = "퀴즈 결과";
+  const ogDescription = `당신의 점수는 ${score}점입니다! 이 분을 이겨보세요! 👊`;
+
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
+      <Head>
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:title" content={ogTitle} />
+        <meta property="og:description" content={ogDescription} />
+      </Head>
       {loading ? (
         <div className="text-center">
           <div className="spinner"></div>
@@ -134,7 +144,6 @@ const Results = () => {
       )}
     </div>
   );
-  // ...
 };
 
 export default Results;
