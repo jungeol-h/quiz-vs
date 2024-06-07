@@ -12,7 +12,7 @@ export const metadata = {
     siteName: "GPT 도장 깨기",
     images: [
       {
-        url: "https://www.example.com/og-image.jpg",
+        url: "https://quiz-vs.vercel.app/public/og-image.png",
         width: 800,
         height: 600,
       },
