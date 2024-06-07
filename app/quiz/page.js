@@ -97,6 +97,7 @@ const Quiz = () => {
           ...data,
           correctCount: correctCount,
           totalQuestions: updatedAnswers.length,
+          answers: updatedAnswers,
         })
       );
       router.replace("/results");

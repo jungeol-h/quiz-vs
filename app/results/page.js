@@ -9,6 +9,7 @@ const Results = () => {
   const [grade, setGrade] = useState(null);
   const [nickname, setNickname] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [answers, setAnswers] = useState([]); // [question, correctAnswer, userAnswer, isCorrect
   const router = useRouter();
 
   useEffect(() => {
@@ -20,6 +21,7 @@ const Results = () => {
         setTotalQuestions(data.totalQuestions || 0);
         setGrade(data.tier);
         setNickname(data.nickname);
+        setAnswers(data.answers || []);
       }
       setLoading(false);
     };
@@ -59,12 +61,12 @@ const Results = () => {
             <>
               <h2 className="text-4xl font-bold mb-8">🎉 퀴즈 결과 🎉</h2>
               <div className="bg-gray-800 p-8 rounded-lg shadow-lg">
-                <p className="text-3xl mb-4">
-                  당신의 점수는 <strong>{score}점</strong>입니다!
+                <p className="text-3xl mb-1">
+                  당신의 점수는 <br></br>
+                  <strong>{score}점</strong>
                 </p>
-                <p className="text-xl mb-2">
-                  맞은 문제 수: <strong>{correctAnswersCount}</strong> /{" "}
-                  {totalQuestions}
+                <p className="text-xs mb-2">
+                  ({correctAnswersCount} / {totalQuestions})
                 </p>
                 <p className="text-2xl mb-4">
                   <strong>{grade}</strong>등급
@@ -103,6 +105,26 @@ const Results = () => {
                 >
                   📢 친구 도발하기
                 </button>
+              </div>
+              <div className="mt-8">
+                <h3 className="text-2xl font-bold mb-4">문제 리스트</h3>
+                <ul className="space-y-4">
+                  {answers.map((answer, index) => (
+                    <li key={index} className="bg-gray-800 p-4 rounded-lg">
+                      <p className="text-lg mb-2">{answer.question}</p>
+                      <p className="text-sm text-gray-400 mb-1">
+                        정답: {answer.correctAnswer}
+                      </p>
+                      <p
+                        className={`text-sm ${
+                          answer.isCorrect ? "text-green-500" : "text-red-500"
+                        }`}
+                      >
+                        내가 고른 답: {answer.userAnswer}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </>
           ) : (
