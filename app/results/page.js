@@ -50,8 +50,8 @@ const Results = () => {
       : 0;
 
   const ogImageUrl = "이미지URL"; // 동적으로 설정할 수 있습니다.
-  const ogTitle = "퀴즈 결과";
-  const ogDescription = `당신의 점수는 ${score}점입니다! 이 분을 이겨보세요! 👊`;
+  const ogTitle = "GPT 도장깨기 - 상식퀴즈";
+  const ogDescription = `${score}점 맞힌 이 분을 이겨보세요! 👊`;
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
