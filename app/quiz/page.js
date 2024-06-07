@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { Player } from "@lottiefiles/react-lottie-player";
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
@@ -127,13 +128,41 @@ const Quiz = () => {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-md relative">
+        <Player
+          autoplay
+          loop
+          src="/robot-lottie.json"
+          style={{ height: "100px" }}
+        />
+        <div className="h-20">
+          {showAnswer && (
+            <div className="mt-2 flex justify-center">
+              <div
+                className={`relative bg-white p-4 rounded-lg shadow-md ${
+                  isCorrect ? "text-green-500" : "text-red-500"
+                }`}
+                style={{ width: "fit-content" }}
+              >
+                <div
+                  className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full border-[6px] border-transparent border-b-white"
+                  style={{ borderBottomColor: "white" }}
+                ></div>
+                {isCorrect ? (
+                  <div>이걸 맞추네;;</div>
+                ) : (
+                  <div>틀렸습니다. 정답은 {correctOption}입니다.</div>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
         <progress
           className="progress progress-primary w-full mb-4"
           value={(currentQuestionIndex + 1) * (100 / questions.length)}
           max="100"
         ></progress>
-        <div className="mb-4 text-lg ">{currentQuestion.question}</div>
+        <div className="mb-4 text-lg">{currentQuestion.question}</div>
         <div className="flex flex-col">
           {currentQuestion.options.map((option, index) => (
             <button
@@ -154,17 +183,6 @@ const Quiz = () => {
             </button>
           ))}
         </div>
-        {showAnswer && (
-          <div className="mt-4">
-            {isCorrect ? (
-              <div className="text-green-500">정답입니다!</div>
-            ) : (
-              <div className="text-red-500">
-                오답입니다. 정답은 {correctOption} 입니다.
-              </div>
-            )}
-          </div>
-        )}
       </div>
     </div>
   );
