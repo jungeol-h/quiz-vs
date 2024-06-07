@@ -1,6 +1,13 @@
+"use client";
+import { useEffect } from "react";
 import Link from "next/link";
 
 export default function Home() {
+  useEffect(() => {
+    // 로컬 스토리지 초기화
+    localStorage.removeItem("quizResults");
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
       <h1 className="text-5xl font-bold">퀴즈 풀기</h1>

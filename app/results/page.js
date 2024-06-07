@@ -5,15 +5,19 @@ import { useEffect, useState } from "react";
 const Results = () => {
   const [score, setScore] = useState(null);
   const [grade, setGrade] = useState(null);
+  const [nickname, setNickname] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchResults = async () => {
-      setTimeout(() => {
-        setScore(85); // 예시 점수
-        setGrade("1등급 - 경기장은 잘 알지만 사회는 낯선 운동광");
-        setLoading(false);
-      }, 2000);
+    const fetchResults = () => {
+      const storedResults = localStorage.getItem("quizResults");
+      if (storedResults) {
+        const data = JSON.parse(storedResults);
+        setScore(data.score);
+        setGrade(data.tier);
+        setNickname(data.nickname);
+      }
+      setLoading(false);
     };
 
     fetchResults();
@@ -27,7 +31,8 @@ const Results = () => {
         <div className="text-center">
           <h2 className="text-4xl font-bold mb-4">결과</h2>
           <p className="text-2xl mb-2">점수: {score}점</p>
-          <p className="text-xl">{grade}</p>
+          <p className="text-xl">등급: {grade}</p>
+          <p className="text-xl">{nickname}</p>
           <button
             className="btn btn-primary mt-6"
             onClick={() => {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 
 const Quiz = () => {
@@ -8,6 +8,7 @@ const Quiz = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
   const router = useRouter();
+  const isQuizCompleted = useRef(false);
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -22,39 +23,58 @@ const Quiz = () => {
     fetchQuestions();
   }, []);
 
+  useEffect(() => {
+    if (isQuizCompleted.current) {
+      sendQuizData(userAnswers);
+    }
+  }, [userAnswers]);
+
   const handleAnswerClick = (option) => {
     const currentQuestion = questions[currentQuestionIndex];
-    setUserAnswers([
+    const updatedAnswers = [
       ...userAnswers,
       {
         question: currentQuestion.question,
         category: currentQuestion.category,
         correctAnswer: currentQuestion.correctAnswer,
         userAnswer: option,
+        isCorrect: option === currentQuestion.correctAnswer,
       },
-    ]);
+    ];
+
+    setUserAnswers(updatedAnswers);
+
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      sendQuizData();
-      router.push("/results");
+      isQuizCompleted.current = true;
     }
   };
 
-  const sendQuizData = async () => {
+  const sendQuizData = async (updatedAnswers) => {
     try {
-      await fetch(
+      const correctAnswersCount = updatedAnswers.filter(
+        (answer) => answer.isCorrect
+      ).length;
+      const score = Math.round((correctAnswersCount / questions.length) * 100);
+
+      const response = await fetch(
         "https://hook.eu2.make.com/x845bxmr5m361he31t4qx58weabrq2hp",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ answers: userAnswers }),
+          body: JSON.stringify({ answers: updatedAnswers }),
         }
       );
+      const data = await response.json();
+      data.score = score;
+      localStorage.setItem("quizResults", JSON.stringify(data));
+      router.push("/results");
     } catch (error) {
       console.error("Error sending quiz data:", error);
+      router.push("/results");
     }
   };
 

@@ -1,14 +1,670 @@
 [
   {
-    "question": "대한민국의 수도는 어디인가요?",
-    "category": "지리",
-    "options": ["서울", "부산", "인천", "대구"],
-    "correctAnswer": "서울"
+    "questionId": 1,
+    "category": "정치",
+    "question": "우리나라 대통령의 임기는 몇 년인가?",
+    "options": ["3년", "4년", "5년", "6년"],
+    "correctAnswer": 3
   },
   {
-    "question": "세계에서 가장 큰 대륙은 어디인가요?",
-    "category": "지리",
-    "options": ["아시아", "아프리카", "유럽", "남아메리카"],
-    "correctAnswer": "아시아"
+    "questionId": 2,
+    "category": "경제",
+    "question": "다음 중 지방세에 해당하는 것은?",
+    "options": ["취득세", "소득세", "법인세", "상속세"],
+    "correctAnswer": 1
+  },
+  {
+    "questionId": 3,
+    "category": "경제",
+    "question": "다음 중 우리나라와 FTA가 발효된 국가가 아닌 나라는?",
+    "options": ["칠레", "페루", "멕시코", "베트남"],
+    "correctAnswer": 3
+  },
+  {
+    "questionId": 4,
+    "category": "경제",
+    "question": "중소 벤처기업 전용 주식시장으로 창업 초기 소규모 기업의 원활한 자금 조달을 위해 만들어진 것은?",
+    "options": ["코넥스", "코스피", "코스닥", "나스닥"],
+    "correctAnswer": 1
+  },
+  {
+    "questionId": 5,
+    "category": "경제",
+    "question": "20%의 상품 또는 상위 20% 고객이 총 매출의 80%를 차지한다는 경제 용어는?",
+    "options": ["파레토 법칙", "롱테일 법칙", "멘델의 법칙", "메라비언 법칙"],
+    "correctAnswer": 1
+  },
+  {
+    "questionId": 6,
+    "category": "경제",
+    "question": "하나의 물건을 사고 나서 그 물건에 어울릴 만한 물건을 계속해서 구매하며 또 다른 소비로 이어지는 현상은?",
+    "options": ["세이의 법칙", "베블런 효과", "롱테일 법칙", "디드로 효과"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 7,
+    "category": "사회",
+    "question": "인질이 인질범에게 동화돼 오히려 그들에게 호감을 갖고 동조하는 비이성적 현상을 뜻하는 범죄심리학 용어는?",
+    "options": [
+      "리마 증후군",
+      "파랑새 증후군",
+      "피터팬 증후군",
+      "스톡홀름 증후군"
+    ],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 8,
+    "category": "과학",
+    "question": "'여자 아이'라는 뜻을 가진 기후 이상 현상 용어는?",
+    "options": ["넛지", "라니냐", "엘니뇨", "아그레망"],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 9,
+    "category": "국제",
+    "question": "1993년 11월 1일 발효된 유럽통합조약에 따라 재탄생한 유럽공동체 연합 기구는?",
+    "options": ["EU", "UN", "IMF", "TPP"],
+    "correctAnswer": 1
+  },
+  {
+    "questionId": 10,
+    "category": "국제",
+    "question": "다음 중 G7 국가가 아닌 것은?",
+    "options": ["미국", "독일", "캐나다", "러시아"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 11,
+    "category": "국제",
+    "question": "다음 국가와 화폐단위의 연결이 적절하지 않은 것은?",
+    "options": [
+      "필리핀 - 루피",
+      "몽골 - 투그릭",
+      "브라질 - 헤알",
+      "러시아 - 루블"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "questionId": 12,
+    "category": "문화",
+    "question": "유네스코 인류무형문화유산이 아닌 것은?",
+    "options": ["농악", "김장", "택견", "사물놀이"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 13,
+    "category": "역사",
+    "question": "사서오경 중 사서에 해당되지 않는 것은?",
+    "options": ["논어", "맹자", "중용", "춘추"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 14,
+    "category": "역사",
+    "question": "고려 후기 공민왕 때 권문세족과 대립한 정치지배세력은?",
+    "options": ["호족", "권문세족", "문벌귀족", "신진사대부"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 15,
+    "category": "스포츠",
+    "question": "2022년 월드컵 개최국은?",
+    "options": ["러시아", "카타르", "네덜란드", "아르헨티나"],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 16,
+    "category": "경제",
+    "question": "세계적으로 가장 널리 쓰이는 온라인 가상화폐 명칭은?",
+    "options": ["리플코인", "비트코인", "이더리움", "라이트코인"],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 17,
+    "category": "과학",
+    "question": "24절기 중 밤이 가장 긴 시기는?",
+    "options": ["입동", "대설", "동지", "대한"],
+    "correctAnswer": 3
+  },
+  {
+    "questionId": 18,
+    "category": "문화",
+    "question": "다음 중 판소리 다섯마당에 속하지 않은 것은?",
+    "options": ["춘향가", "적벽가", "수궁가", "하여가"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 19,
+    "category": "정치",
+    "question": "금융실명제를 실시한 대통령은?",
+    "options": ["노태우", "김영삼", "김대중", "이명박"],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 20,
+    "category": "사회",
+    "question": "다음 중 노동3권이 아닌 것은?",
+    "options": ["단결권", "단체교섭권", "단체행동권", "단체결성권"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 21,
+    "category": "사회",
+    "question": "문화예술 스포츠 등에 대한 기업의 지원활동의 총칭은?",
+    "options": ["메가", "메세나", "메라비언", "메르코수르"],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 22,
+    "category": "사회",
+    "question": "이메일이나 위장된 홈페이지 등 가짜 정보를 매개로 사용자의 개인정보를 빼가는 수법은?",
+    "options": ["피싱", "파밍", "스푸핑", "스미싱"],
+    "correctAnswer": 1
+  },
+  {
+    "questionId": 23,
+    "category": "경제",
+    "question": "경기침체에도 불구하고 물가가 오히려 오르는 현상은?",
+    "options": ["인플레이션", "디플레이션", "애그플레이션", "스태그플레이션"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 24,
+    "category": "국제",
+    "question": "중국의 시진핑 국가주석이 제안해 설립한 국제투자은행의 명칭은?",
+    "options": ["IBRD", "AIIB", "ELS", "PPL"],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 25,
+    "category": "국제",
+    "question": "교토의정서의 효력이 2020년 만료됨에 따라 이를 대체하는 협약은?",
+    "options": ["런던협약", "바젤협약", "유엔기후변화협약", "파리기후변화협약"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 26,
+    "category": "국제",
+    "question": "영국의 유럽연합 탈퇴를 의미하는 용어는?",
+    "options": ["그렉시트", "브렉시트", "스펙시트", "포렉시트"],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 27,
+    "category": "역사",
+    "question": "다음 중 신석기 시대의 유물은?",
+    "options": ["주먹도끼", "찌르개", "골각기", "빗살무늬 토기"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 28,
+    "category": "정치",
+    "question": "현직 대통령의 임기 만료를 앞두고 나타나는 권력누수 현상은?",
+    "options": ["레임덕", "왝더독", "데드덕", "언더독"],
+    "correctAnswer": 1
+  },
+  {
+    "questionId": 29,
+    "category": "경제",
+    "question": "대기업의 성장을 촉진하면 중소기업과 소비자에게도 그 혜택이 돌아가 전체적으로 경기가 활성화된다는 경제이론은?",
+    "options": ["낙수 효과", "폭포 효과", "분수 효과", "샤워 효과"],
+    "correctAnswer": 1
+  },
+  {
+    "questionId": 30,
+    "category": "사회",
+    "question": "타인의 기대나 관심을 받을 경우 그러한 기대에 부응하여 긍정적인 행태를 보이게 되는 현상은?",
+    "options": ["호손 효과", "바넘 효과", "스티그마 효과", "피그말리온 효과"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 31,
+    "category": "사회",
+    "question": "4대 보험에 속하지 않는 것은?",
+    "options": ["국민연금", "고용보험", "연금보험", "산재보험"],
+    "correctAnswer": 3
+  },
+  {
+    "questionId": 32,
+    "category": "국제",
+    "question": "유로화를 쓰지 않는 국가는?",
+    "options": ["독일", "덴마크", "프랑스", "벨기에"],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 33,
+    "category": "문화",
+    "question": "다음 중 한국의 유네스코 유산이 아닌 것은?",
+    "options": ["씨름", "연등회", "아리랑", "무예도보통지"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 34,
+    "category": "역사",
+    "question": "세종대왕이 훈민정음을 창제할 당시 글자 수는?",
+    "options": ["26자", "27자", "28자", "29자"],
+    "correctAnswer": 3
+  },
+  {
+    "questionId": 35,
+    "category": "문화",
+    "question": "미켈란젤로의 작품이 아닌 것은?",
+    "options": ["동굴의 성모", "천지창조", "다비드상", "최후의 심판"],
+    "correctAnswer": 1
+  },
+  {
+    "questionId": 36,
+    "category": "역사",
+    "question": "다음 중 단군신화가 실리지 않는 문헌은?",
+    "options": ["삼국사기", "삼국유사", "제왕운기", "동국여지승람"],
+    "correctAnswer": 1
+  },
+  {
+    "questionId": 37,
+    "category": "과학",
+    "question": "생물의 세포나 조직 등을 이용해 만드는 바이오의약품의 복제약은?",
+    "options": ["제네릭", "카피약", "바이오CMO", "바이오시밀러"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 38,
+    "category": "스포츠",
+    "question": "2022년 동계올림픽이 열린 곳은?",
+    "options": [
+      "러시아 소치",
+      "중국 베이징",
+      "프랑스 파리",
+      "미국 로스엔젤레스"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 39,
+    "category": "과학",
+    "question": "다음 중 멘델의 법칙에 포함되지 않는 것은?",
+    "options": ["우열의 법칙", "분리의 법칙", "유전의 법칙", "독립의 법칙"],
+    "correctAnswer": 3
+  },
+  {
+    "questionId": 40,
+    "category": "과학",
+    "question": "세계 최초의 인공위성은?",
+    "options": ["살류트", "아나시스", "익스플로러", "스푸트니크"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 41,
+    "category": "정치",
+    "question": "당 3역에 해당하지 않는 직책은 무엇인가?",
+    "options": ["원내대표", "사무총장", "정책위의장", "당 대표"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 42,
+    "category": "정치",
+    "question": "국회의장, 국회의원, 대통령의 임기를 모두 더한 값은?",
+    "options": ["11", "12", "13", "14"],
+    "correctAnswer": 1
+  },
+  {
+    "questionId": 43,
+    "category": "정치",
+    "question": "의회의 표결에서 가부수가 동수인 경우 의장이 가지는 결정권은?",
+    "options": ["스윙보터", "캐스팅보트", "필리버스터", "오픈 프라이머리"],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 44,
+    "category": "정치",
+    "question": "새로운 회계연도가 개시될 때까지 국회에서 예산이 성립되지 못할 경우 전견도에 준해 짜는 예산은?",
+    "options": ["준예산", "본예산", "성인지예산", "추가경정예산"],
+    "correctAnswer": 1
+  },
+  {
+    "questionId": 45,
+    "category": "정치",
+    "question": "인사청문회 대상 중 국회의 인준 절차가 필요 없는 공직자는?",
+    "options": ["대법원장", "국무총리", "검찰총장", "감사원장"],
+    "correctAnswer": 3
+  },
+  {
+    "questionId": 46,
+    "category": "정치",
+    "question": "정치 이벤트(전당 대회나 경선행사 등) 직후, 지지율 상승 현상은?",
+    "options": [
+      "컨벤션 효과",
+      "밴드왜건 효과",
+      "브래들리 효과",
+      "게리맨더링 효과"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "questionId": 47,
+    "category": "정치",
+    "question": "국가 의전 서열이 두 번째로 높은 직책은?",
+    "options": ["대통령", "대법원장", "국회의장", "헌법재판소장"],
+    "correctAnswer": 3
+  },
+  {
+    "questionId": 48,
+    "category": "정치",
+    "question": "직접세에 해당되지 않는 것은?",
+    "options": ["소득세", "법인세", "상속세", "인지세"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 49,
+    "category": "정치",
+    "question": "기후변화와 경제 문제를 동시에 풀기 위해 친환경 사업에 대규모 투자하는 정책은?",
+    "options": ["그린러시", "골드러시", "그린뉴딜", "한국형 뉴딜"],
+    "correctAnswer": 3
+  },
+  {
+    "questionId": 50,
+    "category": "정치",
+    "question": "Blau & Scott의 조직유형 중 성격이 다른 하나는?",
+    "options": ["정당", "은행", "노동조합", "종교단체"],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 51,
+    "category": "정치",
+    "question": "다른 사람을 처벌할 수 있는 능력에 기반을 둔 권력은?",
+    "options": ["강압적 권력", "합법적 권력", "전문적 권력", "준거적 권력"],
+    "correctAnswer": 1
+  },
+  {
+    "questionId": 52,
+    "category": "정치",
+    "question": "정부의 독주를 막기 위한 일종의 행정 감찰관제도는?",
+    "options": ["크레덴다", "옴부즈맨", "레퍼렌덤", "플레비사이트"],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 53,
+    "category": "정치",
+    "question": "제2심 판결에 불복할 때 신청하는 것은?",
+    "options": ["항소", "항고", "상소", "상고"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 54,
+    "category": "정치",
+    "question": "윤창호법에 따르면 혈중 알코올 몇 % 이상부터 운전면허가 취소되는가?",
+    "options": ["0.03%", "0.05%", "0.08%", "0.10%"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 55,
+    "category": "정치",
+    "question": "남북공동선언 중 가장 먼저 실행된 선언은?",
+    "options": [
+      "6.15 남북공동선언",
+      "7.4 남북공동선언",
+      "4.27 판문점선언",
+      "10.4 남북공동선언"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 56,
+    "category": "정치",
+    "question": "NLL(북방 한계선)은 무엇의 약자인가?",
+    "options": [
+      "Northern Left Latitude",
+      "Northern Left Line",
+      "Northern Limit Line",
+      "Northern Limit Latitude"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "questionId": 57,
+    "category": "정치",
+    "question": "만 10세 이상~14세 미만으로 형벌을 받을 범법행위를 한 형사미성년자를 일컫는 말은?",
+    "options": ["촉법소년", "비행소년", "우범소년", "범법소년"],
+    "correctAnswer": 1
+  },
+  {
+    "questionId": 58,
+    "category": "정치",
+    "question": "NPT에서 공인한 핵 보유국이 아닌 국가는?",
+    "options": ["미국", "영국", "프랑스", "이탈리아"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 59,
+    "category": "정치",
+    "question": "파이브 아이즈와 쿼드 플러스에 동시에 속한 국가는?",
+    "options": ["영국", "일본", "호주", "캐나다"],
+    "correctAnswer": 3
+  },
+  {
+    "questionId": 60,
+    "category": "정치",
+    "question": "우리나라 최초의 한국형 구축함은?",
+    "options": ["대조영함", "세종대왕함", "광개토대왕함", "충무공이순신함"],
+    "correctAnswer": 3
+  },
+  {
+    "questionId": 61,
+    "category": "경제",
+    "question": "두 가지 이상의 경제 악재가 동시에 발생하는 것은?",
+    "options": ["블랙스완", "화이트아웃", "블랙아웃", "퍼펙트스톰"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 62,
+    "category": "경제",
+    "question": "한 나라의 국민이 생산 활동에 참여한 대가로 받은 소득의 합계는?",
+    "options": ["GDP", "GNP", "GNI", "GDP 디플레이터"],
+    "correctAnswer": 3
+  },
+  {
+    "questionId": 63,
+    "category": "경제",
+    "question": "남들이 구매하기 시작하면 자신도 그에 자극돼 덩달아 구매를 결심하는 현상은?",
+    "options": ["핀볼 효과", "펭귄 효과", "백로 효과", "스놉 효과"],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 64,
+    "category": "경제",
+    "question": "시장을 통제하기 위한 목적으로 동종 또는 유사 산업 분야 기업이 연합하는 것은?",
+    "options": ["카르텔", "콘체른", "트러스트", "신디케이트"],
+    "correctAnswer": 1
+  },
+  {
+    "questionId": 65,
+    "category": "경제",
+    "question": "농산물의 가격 급등이 전반적인 인플레이션을 일으키는 것은?",
+    "options": ["디플레이션", "리플레이션", "애그플레이션", "디스인플레이션"],
+    "correctAnswer": 3
+  },
+  {
+    "questionId": 66,
+    "category": "경제",
+    "question": "일정 수준 이상으로 세율이 높아지면 조세수입이 감소한다는 이론과 관계있는 것은?",
+    "options": ["수요곡선", "래퍼 곡선", "거미집 이론", "로렌츠 곡선"],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 67,
+    "category": "경제",
+    "question": "소수의 투자자로부터 자금을 모아 투자해 운용하는 펀드는?",
+    "options": ["리츠펀드", "헤지펀드", "사모펀드", "요즈마펀드"],
+    "correctAnswer": 3
+  },
+  {
+    "questionId": 68,
+    "category": "경제",
+    "question": "소득수준이 낮을수록 전체 생계비에서 주거비용의 비율이 높아지는 현상은?",
+    "options": ["폭포 효과", "부메랑 효과", "슈바베의 법칙", "그레셤의 법칙"],
+    "correctAnswer": 3
+  },
+  {
+    "questionId": 69,
+    "category": "경제",
+    "question": "이미 잘 알려져 있어 경쟁이 치열한 시장은?",
+    "options": ["블랙오션", "블루오션", "퍼플오션", "레드오션"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 70,
+    "category": "경제",
+    "question": "2인 이상의 무한책임사원으로 구성된 회사는?",
+    "options": ["주식회사", "합명회사", "유한회사", "합자회사"],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 71,
+    "category": "경제",
+    "question": "마케팅믹스의 4P가 아닌 것은?",
+    "options": ["Price", "Place", "Position", "Promotion"],
+    "correctAnswer": 3
+  },
+  {
+    "questionId": 72,
+    "category": "경제",
+    "question": "소비자들의 인적 네트워크를 활용하는 마케팅이 아닌 것은?",
+    "options": [
+      "버즈 마케팅",
+      "입소문 마케팅",
+      "플래그십 마케팅",
+      "바이러스 마케팅"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "questionId": 73,
+    "category": "경제",
+    "question": "고의로 고객수를 줄이는 판매 방식은?",
+    "options": ["디마케팅", "그린 마케팅", "럭셔리 마케팅", "하이엔드 마케팅"],
+    "correctAnswer": 1
+  },
+  {
+    "questionId": 74,
+    "category": "사회",
+    "question": "전체 인구 중 65세 인구가 14% 이상인 사회를 무엇이라 하는가?",
+    "options": ["고령사회", "고령화사회", "초고령화사회", "노령사회"],
+    "correctAnswer": 1
+  },
+  {
+    "questionId": 75,
+    "category": "사회",
+    "question": "공직자가 자신의 임기 중에 일을 무리하게 진행시키지 않고 무사안일하게 시간이 흐르기만 기다리는 현상은?",
+    "options": ["님비 현상", "님투 현상", "핌피 현상", "핌투 현상"],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 76,
+    "category": "사회",
+    "question": "학업 취업 가사일을 할 의욕이 전혀 없는 15~34세의 젊은 층은?",
+    "options": ["니트족", "듀크족", "딘트족", "딩크족"],
+    "correctAnswer": 1
+  },
+  {
+    "questionId": 77,
+    "category": "사회",
+    "question": "도시에서 전문직에 종사하는 고수입의 전문 인텔리는?",
+    "options": ["더피족", "여피족", "피딩족", "보보스족"],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 78,
+    "category": "사회",
+    "question": "두뇌와 정보(아이디어와 창조적 사고)로 정보화시대를 이끌어가는 전문직 종사자는?",
+    "options": ["골드칼라", "레인보우칼라", "르네상스칼라", "다이아몬드칼라"],
+    "correctAnswer": 1
+  },
+  {
+    "questionId": 79,
+    "category": "사회",
+    "question": "말콤 글래드웰의 저서에서 등장한, 각 분야에서 큰 성공을 거둔 탁월한 사람을 일컫는 말은?",
+    "options": ["보보스족", "골드칼라", "아웃라리어", "티핑 포인트"],
+    "correctAnswer": 3
+  },
+  {
+    "questionId": 80,
+    "category": "역사",
+    "question": "청동기 시대의 특징이 아닌 것은?",
+    "options": ["고인돌", "철제 농기구", "비파형동검", "민무늬토기"],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 81,
+    "category": "역사",
+    "question": "고대 국가 중 고구려의 풍속은?",
+    "options": ["소도", "영고", "책화", "동맹"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 82,
+    "category": "역사",
+    "question": "불국사에서 발견된 세계에서 가장 오래된 목판 인쇄물은?",
+    "options": [
+      "왕오천축국전",
+      "직지심체요절",
+      "천상열차분야지도",
+      "무구정광대다라니경"
+    ],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 83,
+    "category": "역사",
+    "question": "천민의 신분해방운동이 아닌 것은?",
+    "options": [
+      "만적의 난",
+      "이자겸의 난",
+      "전주 관노의 난",
+      "망이 망소이의 난"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 84,
+    "category": "과학",
+    "question": "마이크로, 나노, 피코, 펨토 중 가장 작은 단위는?",
+    "options": ["마이크로", "나노", "피코", "펨토"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 85,
+    "category": "과학",
+    "question": "대기 중 가장 많은 기체는?",
+    "options": ["산소", "질소", "수소", "이산화탄소"],
+    "correctAnswer": 2
+  },
+  {
+    "questionId": 86,
+    "category": "과학",
+    "question": "늦은 봄에서 초여름에 걸쳐 동해로부터 태백산맥을 넘어 불어오는 고온건조한 바람은?",
+    "options": ["샛바람", "마파람", "된바람", "높새바람"],
+    "correctAnswer": 4
+  },
+  {
+    "questionId": 87,
+    "category": "과학",
+    "question": "WHO가 펜데믹으로 선언한 질병이 아닌 것은?",
+    "options": ["홍콩독감", "코로나19", "에볼라바이러스", "신종인플루엔자"],
+    "correctAnswer": 3
+  },
+  {
+    "questionId": 88,
+    "category": "과학",
+    "question": "인도양과 아라비아해에서 발생하는 열대 저기압을 무엇이라고 부르는가?",
+    "options": ["태풍", "윌리윌리", "사이클론", "허리케인"],
+    "correctAnswer": 3
+  },
+  {
+    "questionId": 89,
+    "category": "과학",
+    "question": "갈릴레이가 발견한 목성의 세 번째 위성으로, 자체적으로 자기장을 가진 유일한 위성은?",
+    "options": ["이오", "유로파", "칼리스토", "가니메데"],
+    "correctAnswer": 4
   }
 ]
