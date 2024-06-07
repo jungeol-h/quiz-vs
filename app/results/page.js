@@ -99,7 +99,8 @@ const Results = () => {
                   onClick={() => {
                     if (navigator.share) {
                       navigator.share({
-                        title: "퀴즈 결과",
+                        title: ogTitle,
+                        text: `${correctAnswersCount}개나 맞힌 이 분을 이겨보세요! 👊`,
                         url: "https://quiz-vs.vercel.app/",
                       });
                     } else {
