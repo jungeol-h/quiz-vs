@@ -1,13 +1,17 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { FaArrowRight } from "react-icons/fa";
 
 export default function Home() {
+  const [isClient, setIsClient] = useState(false);
+
   useEffect(() => {
-    // 로컬 스토리지 초기화
-    localStorage.removeItem("quizResults");
+    // 클라이언트 사이드에서만 로컬 스토리지 초기화
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("quizResults");
+    }
   }, []);
 
   return (

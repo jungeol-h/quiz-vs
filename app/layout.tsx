@@ -1,6 +1,7 @@
 import "./globals.css";
 import Link from "next/link";
 import { FaHome } from "react-icons/fa";
+import localFont from "next/font/local";
 
 export const metadata = {
   title: "GPT 도장 깨기",
@@ -22,14 +23,21 @@ export const metadata = {
   },
 };
 
+const pretendard = localFont({
+  src: "../public/PretendardVariable.woff2",
+  display: "swap",
+  weight: "45 920",
+  variable: "--font-pretendard",
+});
+
 interface Props {
   children: React.ReactNode;
 }
 
 export default function RootLayout({ children }: Props) {
   return (
-    <html lang="ko">
-      <body>
+    <html lang="ko" className={`${pretendard.variable}`}>
+      <body className={pretendard.className}>
         <div className="navbar bg-neutral text-neutral-content justify-center mb-2 h-12">
           <Link href="/" className="btn btn-ghost">
             <FaHome className="text-xl" />
