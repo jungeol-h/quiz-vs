@@ -4,16 +4,16 @@ import { FaHome } from "react-icons/fa";
 import localFont from "next/font/local";
 
 export const metadata = {
-  title: "GPT 도장 깨기",
-  description: "GPT도 틀린 상식 문제 맞히면 인정",
+  title: "날먹상식: 상식 퀴즈 나 vs GPT",
+  description: "다 맞히면 GPT보다 상식 고수 인정합니다",
   openGraph: {
-    title: "GPT 도장 깨기",
-    description: "GPT도 틀린 상식 문제 맞히면 인정",
+    title: "날먹상식: 상식 퀴즈 나 vs GPT",
+    description: "다 맞히면 GPT보다 상식 고수 인정합니다",
     url: "https://quiz-vs.vercel.app/",
-    siteName: "GPT 도장 깨기",
+    siteName: "날먹상식",
     images: [
       {
-        url: "https://quiz-vs.vercel.app/public/og-image.png",
+        url: "/og-image.png",
         width: 800,
         height: 600,
       },
