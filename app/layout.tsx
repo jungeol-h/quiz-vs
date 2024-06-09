@@ -3,6 +3,8 @@ import Link from "next/link";
 import { FaHome } from "react-icons/fa";
 import localFont from "next/font/local";
 import Analytics from "../components/Analytics";
+import { GoogleTagManager } from "@next/third-parties/google";
+
 import { Suspense } from "react";
 
 export const metadata = {
@@ -64,9 +66,7 @@ export default function RootLayout({ children }: Props) {
         />
       </head>
       <body className={pretendard.className}>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Analytics />
-        </Suspense>
+        <GoogleTagManager gtmId="GTM-TZWQQC8K" />
         <div className="navbar bg-neutral text-neutral-content justify-center mb-2 h-12">
           <Link href="/" className="btn btn-ghost">
             <FaHome className="text-xl" />
