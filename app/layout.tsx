@@ -1,9 +1,9 @@
-// app/layout.tsx
 import "./globals.css";
 import Link from "next/link";
 import { FaHome } from "react-icons/fa";
 import localFont from "next/font/local";
 import Analytics from "../components/Analytics";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "날먹상식: 상식 퀴즈 나 vs GPT",
@@ -64,7 +64,9 @@ export default function RootLayout({ children }: Props) {
         />
       </head>
       <body className={pretendard.className}>
-        <Analytics />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Analytics />
+        </Suspense>
         <div className="navbar bg-neutral text-neutral-content justify-center mb-2 h-12">
           <Link href="/" className="btn btn-ghost">
             <FaHome className="text-xl" />
