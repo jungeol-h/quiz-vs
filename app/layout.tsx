@@ -1,7 +1,10 @@
+// RootLayout.tsx
 import "./globals.css";
 import Link from "next/link";
 import { FaHome } from "react-icons/fa";
 import localFont from "next/font/local";
+import Head from "next/head";
+import Script from "next/script";
 
 export const metadata = {
   title: "날먹상식: 상식 퀴즈 나 vs GPT",
@@ -37,6 +40,30 @@ interface Props {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="ko" className={`${pretendard.variable}`}>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        {/* Open Graph meta tags */}
+        <meta property="og:title" content={metadata.openGraph.title} />
+        <meta
+          property="og:description"
+          content={metadata.openGraph.description}
+        />
+        <meta property="og:url" content={metadata.openGraph.url} />
+        <meta property="og:site_name" content={metadata.openGraph.siteName} />
+        <meta property="og:locale" content={metadata.openGraph.locale} />
+        <meta property="og:type" content={metadata.openGraph.type} />
+        <meta property="og:image" content={metadata.openGraph.images[0].url} />
+        <meta
+          property="og:image:width"
+          content={metadata.openGraph.images[0].width.toString()}
+        />
+        <meta
+          property="og:image:height"
+          content={metadata.openGraph.images[0].height.toString()}
+        />
+      </Head>
       <body className={pretendard.className}>
         <div className="navbar bg-neutral text-neutral-content justify-center mb-2 h-12">
           <Link href="/" className="btn btn-ghost">
@@ -45,6 +72,18 @@ export default function RootLayout({ children }: Props) {
           </Link>
         </div>
         <div className="px-4">{children}</div>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-MLRL3B4HKD"
+        ></Script>
+        <Script id="ga4-init">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-MLRL3B4HKD');
+          `}
+        </Script>
       </body>
     </html>
   );

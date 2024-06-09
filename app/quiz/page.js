@@ -52,6 +52,8 @@ const Quiz = () => {
     setSelectedOption(option);
     setShowAnswer(true);
 
+    const delay = process.env.NODE_ENV === "development" ? 100 : 1000;
+
     if (currentQuestionIndex < questions.length - 1) {
       setTimeout(
         () => {
@@ -59,7 +61,7 @@ const Quiz = () => {
           setSelectedOption(null); // 문제 전환 시 선택된 옵션 초기화
           setCurrentQuestionIndex(currentQuestionIndex + 1);
         },
-        isCorrectAnswer ? 100 : 100
+        isCorrectAnswer ? delay : delay
       );
     } else {
       isQuizCompleted.current = true;
@@ -68,7 +70,7 @@ const Quiz = () => {
           setIsLoading(true);
           sendQuizData(updatedAnswers);
         },
-        isCorrectAnswer ? 100 : 100
+        isCorrectAnswer ? delay : delay
       );
     }
   };
@@ -79,7 +81,7 @@ const Quiz = () => {
         (answer) => answer.isCorrect
       ).length;
       const response = await fetch(
-        "https://hook.eu2.make.com/x845bxmr5m361he31t4qx58weabrq2hp",
+        "https://hook.eu2.make.com/ljtf7563g3lhmyh2iad6ceqmohaiaenh",
         {
           method: "POST",
           headers: {
