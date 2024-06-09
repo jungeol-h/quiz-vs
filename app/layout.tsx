@@ -4,7 +4,6 @@ import Link from "next/link";
 import { FaHome } from "react-icons/fa";
 import localFont from "next/font/local";
 import Head from "next/head";
-import Script from "next/script";
 
 export const metadata = {
   title: "날먹상식: 상식 퀴즈 나 vs GPT",
@@ -63,8 +62,31 @@ export default function RootLayout({ children }: Props) {
           property="og:image:height"
           content={metadata.openGraph.images[0].height.toString()}
         />
+        {/* Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-TZWQQC8K');
+        `,
+          }}
+        />
+        {/* End Google Tag Manager */}
       </Head>
       <body className={pretendard.className}>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-TZWQQC8K"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         <div className="navbar bg-neutral text-neutral-content justify-center mb-2 h-12">
           <Link href="/" className="btn btn-ghost">
             <FaHome className="text-xl" />
@@ -72,18 +94,6 @@ export default function RootLayout({ children }: Props) {
           </Link>
         </div>
         <div className="px-4">{children}</div>
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-MLRL3B4HKD"
-        ></Script>
-        <Script id="ga4-init">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-MLRL3B4HKD');
-          `}
-        </Script>
       </body>
     </html>
   );
