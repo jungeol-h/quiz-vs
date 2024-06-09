@@ -25,17 +25,17 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
-      <h1 className="text-5xl font-bold mb-4">GPT 도장깨기</h1>
+      <h1 className="text-5xl font-bold mb-4">인간 VS GPT</h1>
 
       <div className="mt-6">
         <Player
           autoplay
           loop
           src="/intro.json"
-          style={{ height: "300px", width: "300px" }}
+          style={{ height: "200px", width: "200px" }}
         />
       </div>
-      <p className="mt-4 text-xl">GPT가 틀린 상식 문제들, 맞히실 수 있나요?</p>
+      <p className="mt-4 text-xl">GPT가 틀린 상식들, 다 맞히실 수 있나요?</p>
       <Link href="/quiz">
         <button className="btn btn-primary mt-6">
           퀴즈 풀기

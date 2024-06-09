@@ -50,8 +50,45 @@ const Results = () => {
       : 0;
 
   const ogImageUrl = "이미지URL"; // 동적으로 설정할 수 있습니다.
-  const ogTitle = "GPT 도장깨기 - 상식퀴즈";
+  const ogTitle = "날먹상식: 인간 vs GPT";
   const ogDescription = `${score}점 맞힌 이 분을 이겨보세요! 👊`;
+
+  const copyToClipboard = (text) => {
+    const dummy = document.createElement("textarea");
+    document.body.appendChild(dummy);
+    dummy.value = text;
+    dummy.select();
+    document.execCommand("copy");
+    document.body.removeChild(dummy);
+    alert("링크가 클립보드에 복사되었습니다. 친구에게 직접 공유해보세요!");
+  };
+
+  const handleShare = async () => {
+    const shareData = {
+      title: ogTitle,
+      text: `${correctAnswersCount}개나 맞힌 이 분을 이겨보세요! 👊`,
+      url: "https://quiz-vs.vercel.app/",
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (error) {
+        console.error("Error sharing:", error);
+        alert("공유 중 오류가 발생했습니다.");
+      }
+    } else if (navigator.clipboard) {
+      try {
+        await navigator.clipboard.writeText(shareData.url);
+        alert("링크가 클립보드에 복사되었습니다. 친구에게 직접 공유해보세요!");
+      } catch (error) {
+        console.error("Clipboard error:", error);
+        copyToClipboard(shareData.url);
+      }
+    } else {
+      copyToClipboard(shareData.url);
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
@@ -96,19 +133,9 @@ const Results = () => {
                 </button>
                 <button
                   className="btn btn-primary px-6 py-3"
-                  onClick={() => {
-                    if (navigator.share) {
-                      navigator.share({
-                        title: ogTitle,
-                        text: `${correctAnswersCount}개나 맞힌 이 분을 이겨보세요! 👊`,
-                        url: "https://quiz-vs.vercel.app/",
-                      });
-                    } else {
-                      alert("공유 기능을 지원하지 않는 브라우저입니다.");
-                    }
-                  }}
+                  onClick={handleShare}
                 >
-                  📢 친구 도발하기
+                  📢 친구에게 퀴즈 공유하기
                 </button>
               </div>
               <div className="mt-8">
