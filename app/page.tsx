@@ -15,7 +15,6 @@ const Player = dynamic(
 
 export default function Home() {
   // const [isClient, setIsClient] = useState(false);
-
   useEffect(() => {
     // 클라이언트 사이드에서만 로컬 스토리지 초기화
     if (typeof window !== "undefined") {
@@ -25,7 +24,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
-      <h1 className="text-2xl font-bold mb-4">인간 VS GPT</h1>
+      <h1 className="text-l font-bold ">인간 VS GPT</h1>
+      <h1 className="text-3xl font-bold mb-4">상식 퀴즈</h1>
       <div className="mt-6">
         <Player
           autoplay

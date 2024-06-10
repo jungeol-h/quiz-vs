@@ -1,6 +1,5 @@
 import "./globals.css";
 import Link from "next/link";
-import { FaHome } from "react-icons/fa";
 import localFont from "next/font/local";
 import { GoogleTagManager } from "@next/third-parties/google";
 
@@ -66,7 +65,7 @@ export default function RootLayout({ children }: Props) {
         <GoogleTagManager gtmId="GTM-TZWQQC8K" />
         <div className="navbar bg-base-100 justify-center mb-2 h-12">
           <Link href="/" className="btn btn-ghost">
-            <span className="text-lg">날먹상식</span>
+            <img src="/logowithtext.svg" alt="logo" className="w-20" />
           </Link>
         </div>
         <div className="px-4">{children}</div>

@@ -154,9 +154,9 @@ const Results = () => {
                   </div>
                 </div>
 
-                <div className="mt-8">
+                <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-6">
                   <button
-                    className="btn btn-secondary px-6 py-3 mb-4"
+                    className="btn btn-secondary px-6 py-3"
                     onClick={() => {
                       localStorage.removeItem("quizResults");
                       router.push("/quiz");
