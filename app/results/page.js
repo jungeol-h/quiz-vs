@@ -67,7 +67,7 @@ const Results = () => {
     const shareData = {
       title: ogTitle,
       text: `${correctAnswersCount}개나 맞힌 이 분을 이겨보세요! 👊`,
-      url: "https://quiz-vs.vercel.app/",
+      url: "https://nalmuk.com/",
     };
 
     if (navigator.share) {

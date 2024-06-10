@@ -10,7 +10,7 @@ export const metadata = {
   openGraph: {
     title: "날먹상식: 인간 vs GPT",
     description: "다 맞히면 상식 고수 인정합니다",
-    url: "https://quiz-vs.vercel.app/",
+    url: "https://nalmuk.com/",
     siteName: "날먹상식",
     images: [
       {
@@ -66,7 +66,6 @@ export default function RootLayout({ children }: Props) {
         <GoogleTagManager gtmId="GTM-TZWQQC8K" />
         <div className="navbar bg-neutral text-neutral-content justify-center mb-2 h-12">
           <Link href="/" className="btn btn-ghost">
-            <FaHome className="text-xl" />
             <span className="text-lg">날먹상식</span>
           </Link>
         </div>
