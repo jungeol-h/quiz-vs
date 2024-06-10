@@ -16,18 +16,33 @@ const Quiz = () => {
   const isQuizCompleted = useRef(false);
 
   useEffect(() => {
-    // 클라이언트 사이드에서만 로컬 스토리지 초기화
     if (typeof window !== "undefined") {
       localStorage.removeItem("quizResults");
     }
 
     const fetchQuestions = async () => {
-      const response = await fetch("/quizSet.json");
-      const data = await response.json();
-      const shuffledQuestions = data
+      const [quizSetResponse, quizSetEasyResponse] = await Promise.all([
+        fetch("/quizSet.json"),
+        fetch("/quizSetEasy.json"),
+      ]);
+      const [quizSetData, quizSetEasyData] = await Promise.all([
+        quizSetResponse.json(),
+        quizSetEasyResponse.json(),
+      ]);
+
+      const quizSetQuestions = quizSetData
+        .map((q) => ({ ...q, source: "quizSet" }))
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 6);
+      const quizSetEasyQuestions = quizSetEasyData
+        .map((q) => ({ ...q, source: "quizSetEasy" }))
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 14);
+      const combinedQuestions = [...quizSetQuestions, ...quizSetEasyQuestions]
         .sort(() => 0.5 - Math.random())
         .slice(0, 20);
-      setQuestions(shuffledQuestions);
+
+      setQuestions(combinedQuestions);
       setIsLoading(false);
     };
 
@@ -50,6 +65,7 @@ const Quiz = () => {
         correctAnswer: correctOption,
         userAnswer: option,
         isCorrect: isCorrectAnswer,
+        source: currentQuestion.source, // Include source in the answers
       },
     ];
 
@@ -63,7 +79,7 @@ const Quiz = () => {
       setTimeout(
         () => {
           setShowAnswer(false);
-          setSelectedOption(null); // 문제 전환 시 선택된 옵션 초기화
+          setSelectedOption(null);
           setCurrentQuestionIndex(currentQuestionIndex + 1);
         },
         isCorrectAnswer ? delay : delay
@@ -86,7 +102,6 @@ const Quiz = () => {
         (answer) => answer.isCorrect
       ).length;
 
-      // Calculate scores by category
       const categoryScores = updatedAnswers.reduce((acc, answer) => {
         if (!acc[answer.category]) {
           acc[answer.category] = { correct: 0, total: 0 };
@@ -109,7 +124,7 @@ const Quiz = () => {
             answers: updatedAnswers,
             correctCount: correctCount,
             totalQuestions: updatedAnswers.length,
-            categoryScores: categoryScores, // Include category scores
+            categoryScores: categoryScores,
           }),
         }
       );
@@ -121,7 +136,7 @@ const Quiz = () => {
           correctCount: correctCount,
           totalQuestions: updatedAnswers.length,
           answers: updatedAnswers,
-          categoryScores: categoryScores, // Include category scores
+          categoryScores: categoryScores,
         })
       );
       router.replace("/results");
@@ -156,6 +171,7 @@ const Quiz = () => {
           src="/robot-lottie.json"
           style={{ height: "100px" }}
         />
+
         <div className="h-20">
           {showAnswer && (
             <div className="mt-2 flex justify-center">
@@ -183,7 +199,16 @@ const Quiz = () => {
           value={(currentQuestionIndex + 1) * (100 / questions.length)}
           max="100"
         ></progress>
-        <div className="mb-4 text-lg">{currentQuestion.question}</div>
+
+        <div className="mb-4 text-lg flex justify-end flex-col gap-2 min-h-14 mb-4">
+          {" "}
+          {currentQuestion.source === "quizSet" && (
+            <div className="badge badge-accent badge-outline text-xs">
+              GPT가 틀린 문제
+            </div>
+          )}
+          {currentQuestion.question}
+        </div>
         <div className="flex flex-col">
           {currentQuestion.options.map((option, index) => (
             <button
