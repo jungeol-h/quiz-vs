@@ -79,7 +79,6 @@ export default function Home() {
           <FaArrowRight className="ml-1" />
         </button>
       </Link>
-      <p className="text-sm mt-2 mb-12">20문제 / 약 3분 소요</p>
     </div>
   );
 }
