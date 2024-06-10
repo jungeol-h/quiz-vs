@@ -7,3 +7,16 @@
     text-wrap: balance;
   }
 }
+
+@keyframes fillAnimation {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.radial-progress {
+  animation: fillAnimation 2s ease-in-out forwards;
+}

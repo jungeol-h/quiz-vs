@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Head from "next/head";
+import useTypingEffect from "../hooks/useTypingEffect";
 
 const Results = () => {
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
@@ -13,6 +14,8 @@ const Results = () => {
   const [answers, setAnswers] = useState([]); // [question, correctAnswer, userAnswer, isCorrect]
   const [categoryScores, setCategoryScores] = useState({});
   const router = useRouter();
+
+  const typedNickname = useTypingEffect(nickname);
 
   useEffect(() => {
     const fetchResults = () => {
@@ -102,10 +105,9 @@ const Results = () => {
         <div className="text-center">
           {totalQuestions > 0 ? (
             <>
-              <h2 className="text-4xl font-bold mb-8 mt-8">🎉 퀴즈 결과 🎉</h2>
+              <h2 className="text-3xl font-bold mt-8">🎉 점수는...! 🎉</h2>
               <div className="p-8 rounded-lg shadow-lg">
-                <p className="text-3xl mb-1">
-                  당신의 점수는 <br />
+                <p className="text-4xl mb-1">
                   <strong>{score}점</strong>
                 </p>
                 <p className="text-xs mb-2">
@@ -114,7 +116,8 @@ const Results = () => {
                 <p className="text-2xl mb-4">
                   <strong>{grade}</strong>등급
                 </p>
-                <p className="text-xl">🤖 한줄평: {nickname}</p>
+                <p className="text-l">🤖 한줄평</p>
+                <p className="font-bold">{typedNickname}</p>
                 <div className="mt-4 text-sm text-gray-400">
                   <p>
                     * 등급과 별명은 GPT가 정오답 문제를 기반으로 평가한
@@ -123,8 +126,8 @@ const Results = () => {
                 </div>
 
                 <div className="mt-8">
-                  <h3 className="text-2xl font-bold mb-4">분야별 점수</h3>
-                  <div className="flex flex-wrap justify-center gap-4">
+                  <h3 className="text-xl font-bold mb-6">분야별 점수</h3>
+                  <div className="flex flex-wrap justify-center gap-12">
                     {Object.keys(categoryScores).map((category, index) => {
                       const score = categoryScores[category];
                       const percentage =
@@ -135,11 +138,16 @@ const Results = () => {
                         <div key={index} className="flex flex-col items-center">
                           <div
                             className="radial-progress bg-gray-50 text-primary text-xs"
-                            style={{ "--value": percentage }}
+                            style={{
+                              "--value": percentage,
+                              "--size": "3.5rem",
+                            }}
                           >
                             {percentage}%
                           </div>
-                          <p className="text-lg mt-2">{category}</p>
+                          <p className="text-xs mt-2 text-neutral-400">
+                            {category}
+                          </p>
                         </div>
                       );
                     })}
@@ -148,7 +156,7 @@ const Results = () => {
 
                 <div className="mt-8">
                   <button
-                    className="btn btn-secondary px-6 py-3 mr-4"
+                    className="btn btn-secondary px-6 py-3 mb-4"
                     onClick={() => {
                       localStorage.removeItem("quizResults");
                       router.push("/quiz");

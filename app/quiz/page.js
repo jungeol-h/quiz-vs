@@ -16,6 +16,11 @@ const Quiz = () => {
   const isQuizCompleted = useRef(false);
 
   useEffect(() => {
+    // 클라이언트 사이드에서만 로컬 스토리지 초기화
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("quizResults");
+    }
+
     const fetchQuestions = async () => {
       const response = await fetch("/quizSet.json");
       const data = await response.json();
