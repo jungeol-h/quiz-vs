@@ -121,7 +121,7 @@ const Results = () => {
                   ({correctAnswersCount} / {totalQuestions})
                 </p>
                 <p className="text-2xl mb-4">
-                  <strong>{grade}</strong>등급
+                  <strong>{10 - grade}</strong>등급
                 </p>
                 <p className="text-l">🤖 한줄평</p>
                 <p className="font-bold">{typedNickname}</p>
