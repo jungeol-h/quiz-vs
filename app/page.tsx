@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { sendGTMEvent } from "@next/third-parties/google";
@@ -15,14 +15,6 @@ const Player = dynamic(
 );
 
 export default function Home() {
-  // const [isClient, setIsClient] = useState(false);
-  useEffect(() => {
-    // 클라이언트 사이드에서만 로컬 스토리지 초기화
-    if (typeof window !== "undefined") {
-      localStorage.removeItem("quizResults");
-    }
-  }, []);
-
   const handleStartQuiz = () => {
     sendGTMEvent({
       event: "start_quiz",
@@ -31,17 +23,17 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
-      <h1 className="text-l font-bold ">인간 VS GPT</h1>
+      <h1 className="text-2xl font-bold ">인간 VS GPT</h1>
       <h1 className="text-3xl font-bold mb-4">상식 퀴즈</h1>
-      <div className="mt-6 mb-6">
-        <Player
+      <div className="mb-2">
+        {/* <Player
           autoplay
           loop
           src="/robot-lottie.json"
           style={{ height: "100px", width: "100px" }}
-        />
+        /> */}
       </div>
-      <div role="alert" className="alert mb-4">
+      <div role="alert" className="alert mb-4 max-w-md">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -57,7 +49,7 @@ export default function Home() {
         </svg>
         <span className="text-s">GPT가 틀린 문제가 포함되어 있어요.</span>
       </div>
-      <div role="alert" className="alert ">
+      <div role="alert" className="alert max-w-md">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

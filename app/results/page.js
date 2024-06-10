@@ -70,7 +70,7 @@ const Results = () => {
   const handleRetakeQuiz = () => {
     sendGTMEvent("retake_quiz", "click");
     localStorage.removeItem("quizResults");
-    router.push("/");
+    router.push("/quiz");
   };
 
   const handleShare = async () => {
