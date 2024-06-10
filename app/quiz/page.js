@@ -80,6 +80,19 @@ const Quiz = () => {
       const correctCount = updatedAnswers.filter(
         (answer) => answer.isCorrect
       ).length;
+
+      // Calculate scores by category
+      const categoryScores = updatedAnswers.reduce((acc, answer) => {
+        if (!acc[answer.category]) {
+          acc[answer.category] = { correct: 0, total: 0 };
+        }
+        acc[answer.category].total++;
+        if (answer.isCorrect) {
+          acc[answer.category].correct++;
+        }
+        return acc;
+      }, {});
+
       const response = await fetch(
         "https://hook.eu2.make.com/ljtf7563g3lhmyh2iad6ceqmohaiaenh",
         {
@@ -91,6 +104,7 @@ const Quiz = () => {
             answers: updatedAnswers,
             correctCount: correctCount,
             totalQuestions: updatedAnswers.length,
+            categoryScores: categoryScores, // Include category scores
           }),
         }
       );
@@ -102,12 +116,12 @@ const Quiz = () => {
           correctCount: correctCount,
           totalQuestions: updatedAnswers.length,
           answers: updatedAnswers,
+          categoryScores: categoryScores, // Include category scores
         })
       );
       router.replace("/results");
     } catch (error) {
       console.error("Error sending quiz data:", error);
-      // 에러 처리 로직 추가
       setIsLoading(false);
     }
   };
@@ -169,7 +183,7 @@ const Quiz = () => {
           {currentQuestion.options.map((option, index) => (
             <button
               key={index}
-              className={`btn btn-neutral mb-2 ${
+              className={`btn mb-2 ${
                 showAnswer && option === correctOption ? "bg-green-500" : ""
               } ${
                 showAnswer &&

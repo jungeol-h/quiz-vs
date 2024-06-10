@@ -26,7 +26,6 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
       <h1 className="text-5xl font-bold mb-4">인간 VS GPT</h1>
-
       <div className="mt-6">
         <Player
           autoplay

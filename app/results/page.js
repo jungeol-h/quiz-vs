@@ -11,6 +11,7 @@ const Results = () => {
   const [nickname, setNickname] = useState(null);
   const [loading, setLoading] = useState(true);
   const [answers, setAnswers] = useState([]); // [question, correctAnswer, userAnswer, isCorrect]
+  const [categoryScores, setCategoryScores] = useState({});
   const router = useRouter();
 
   useEffect(() => {
@@ -23,13 +24,13 @@ const Results = () => {
         setGrade(data.tier);
         setNickname(data.nickname);
         setAnswers(data.answers || []);
+        setCategoryScores(data.categoryScores || {});
       }
       setLoading(false);
     };
 
     fetchResults();
 
-    // Replace the current history state to disable back navigation
     history.replaceState(null, "", location.href);
 
     const handlePopState = (event) => {
@@ -102,9 +103,9 @@ const Results = () => {
           {totalQuestions > 0 ? (
             <>
               <h2 className="text-4xl font-bold mb-8 mt-8">🎉 퀴즈 결과 🎉</h2>
-              <div className="bg-gray-800 p-8 rounded-lg shadow-lg">
+              <div className="p-8 rounded-lg shadow-lg">
                 <p className="text-3xl mb-1">
-                  당신의 점수는 <br></br>
+                  당신의 점수는 <br />
                   <strong>{score}점</strong>
                 </p>
                 <p className="text-xs mb-2">
@@ -120,31 +121,60 @@ const Results = () => {
                     결과입니다.
                   </p>
                 </div>
+
+                <div className="mt-8">
+                  <h3 className="text-2xl font-bold mb-4">분야별 점수</h3>
+                  <div className="flex flex-wrap justify-center gap-4">
+                    {Object.keys(categoryScores).map((category, index) => {
+                      const score = categoryScores[category];
+                      const percentage =
+                        score.total > 0
+                          ? Math.round((score.correct / score.total) * 100)
+                          : 0;
+                      return (
+                        <div key={index} className="flex flex-col items-center">
+                          <div
+                            className="radial-progress bg-gray-50 text-primary text-xs"
+                            style={{ "--value": percentage }}
+                          >
+                            {percentage}%
+                          </div>
+                          <p className="text-lg mt-2">{category}</p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div className="mt-8">
+                  <button
+                    className="btn btn-secondary px-6 py-3 mr-4"
+                    onClick={() => {
+                      localStorage.removeItem("quizResults");
+                      router.push("/quiz");
+                    }}
+                  >
+                    🔄 다시하기
+                  </button>
+                  <button
+                    className="btn btn-primary px-6 py-3"
+                    onClick={handleShare}
+                  >
+                    📢 친구에게 퀴즈 공유하기
+                  </button>
+                </div>
               </div>
-              <div className="mt-8">
-                <button
-                  className="btn btn-secondary px-6 py-3 mr-4"
-                  onClick={() => {
-                    localStorage.removeItem("quizResults");
-                    router.push("/quiz");
-                  }}
-                >
-                  🔄 다시하기
-                </button>
-                <button
-                  className="btn btn-primary px-6 py-3"
-                  onClick={handleShare}
-                >
-                  📢 친구에게 퀴즈 공유하기
-                </button>
-              </div>
+
               <div className="mt-8">
                 <h3 className="text-2xl font-bold mb-4">문제 리스트</h3>
                 <ul className="space-y-4">
                   {answers.map((answer, index) => (
-                    <li key={index} className="bg-gray-800 p-4 rounded-lg">
+                    <li
+                      key={index}
+                      className="p-4 rounded-lg border-2 border-slate-100"
+                    >
                       <p className="text-lg mb-2">{answer.question}</p>
-                      <p className="text-sm text-gray-400 mb-1">
+                      <p className="text-sm mb-1">
                         정답: {answer.correctAnswer}
                       </p>
                       <p
