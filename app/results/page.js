@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Head from "next/head";
 import useTypingEffect from "../hooks/useTypingEffect";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 const Results = () => {
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
@@ -66,8 +67,14 @@ const Results = () => {
     document.body.removeChild(dummy);
     alert("링크가 클립보드에 복사되었습니다. 친구에게 직접 공유해보세요!");
   };
+  const handleRetakeQuiz = () => {
+    sendGTMEvent("retake_quiz", "click");
+    localStorage.removeItem("quizResults");
+    router.push("/");
+  };
 
   const handleShare = async () => {
+    sendGTMEvent("share_quiz", "click");
     const shareData = {
       title: ogTitle,
       text: `${correctAnswersCount}개나 맞힌 이 분을 이겨보세요! 👊`,
@@ -157,10 +164,7 @@ const Results = () => {
                 <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-6">
                   <button
                     className="btn btn-secondary px-6 py-3"
-                    onClick={() => {
-                      localStorage.removeItem("quizResults");
-                      router.push("/quiz");
-                    }}
+                    onClick={handleRetakeQuiz}
                   >
                     🔄 다시하기
                   </button>

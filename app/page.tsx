@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 import { FaArrowRight } from "react-icons/fa";
 
@@ -22,6 +23,12 @@ export default function Home() {
     }
   }, []);
 
+  const handleStartQuiz = () => {
+    sendGTMEvent({
+      event: "start_quiz",
+    });
+  };
+
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
       <h1 className="text-l font-bold ">인간 VS GPT</h1>
@@ -36,7 +43,7 @@ export default function Home() {
       </div>
       <p className="mt-4 text-l">GPT가 틀린 상식들, 다 맞히실 수 있나요?</p>
       <Link href="/quiz">
-        <button className="btn btn-primary mt-6">
+        <button className="btn btn-primary mt-6" onClick={handleStartQuiz}>
           퀴즈 풀기
           <FaArrowRight className="ml-1" />
         </button>
