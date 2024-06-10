@@ -161,13 +161,18 @@ const Results = () => {
                   </div>
                 </div>
 
-                <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-6">
-                  <button
-                    className="btn btn-secondary px-6 py-3"
-                    onClick={handleRetakeQuiz}
+                <div className="mt-20 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-6">
+                  <div
+                    className="tooltip tooltip-open"
+                    data-tip="새로운 문제 포함!"
                   >
-                    🔄 다시하기
-                  </button>
+                    <button
+                      className="btn btn-secondary px-6 py-3"
+                      onClick={handleRetakeQuiz}
+                    >
+                      🔄 다시 도전
+                    </button>
+                  </div>
                   <button
                     className="btn btn-primary px-6 py-3"
                     onClick={handleShare}
@@ -177,28 +182,59 @@ const Results = () => {
                 </div>
               </div>
 
-              <div className="mt-8">
-                <h3 className="text-2xl font-bold mb-4">문제 리스트</h3>
-                <ul className="space-y-4">
-                  {answers.map((answer, index) => (
-                    <li
-                      key={index}
-                      className="p-4 rounded-lg border-2 border-slate-100"
-                    >
-                      <p className="text-lg mb-2">{answer.question}</p>
-                      <p className="text-sm mb-1">
-                        정답: {answer.correctAnswer}
-                      </p>
-                      <p
-                        className={`text-sm ${
-                          answer.isCorrect ? "text-green-500" : "text-red-500"
-                        }`}
-                      >
-                        내가 고른 답: {answer.userAnswer}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
+              <div className="mt-8 mb-12">
+                <h3 className="text-2xl font-bold mb-4">내가 푼 문제 </h3>
+                <div className="space-y-4">
+                  <div
+                    tabIndex={0}
+                    className="collapse collapse-arrow border border-base-200 bg-base-100 rounded-box"
+                  >
+                    <input type="checkbox" />
+                    <div className="collapse-title text-xl font-medium text-left">
+                      🔥 틀린 문제
+                    </div>
+                    <div className="collapse-content">
+                      <ul>
+                        {answers
+                          .filter((answer) => !answer.isCorrect)
+                          .map((answer, index) => (
+                            <li key={index} className="text-left mb-7">
+                              <p className="text-lg mb-2">{answer.question}</p>
+                              <p className="text-sm mb-1">
+                                정답: {answer.correctAnswer}
+                              </p>
+                              <p className="text-sm text-red-500">
+                                내가 고른 답: {answer.userAnswer}
+                              </p>
+                            </li>
+                          ))}
+                      </ul>
+                    </div>
+                  </div>
+                  <div
+                    tabIndex={0}
+                    className="collapse collapse-arrow border border-base-200 bg-base-100 rounded-box"
+                  >
+                    <input type="checkbox" className="peer" />
+                    <div className="collapse-title text-xl font-medium text-left">
+                      ✅ 맞은 문제
+                    </div>
+                    <div className="collapse-content">
+                      <ul>
+                        {answers
+                          .filter((answer) => answer.isCorrect)
+                          .map((answer, index) => (
+                            <li key={index} className="text-left mb-7">
+                              <p className="text-lg mb-2">{answer.question}</p>
+                              <p className="text-sm mb-1 text-green-500">
+                                정답: {answer.correctAnswer}
+                              </p>
+                            </li>
+                          ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
             </>
           ) : (

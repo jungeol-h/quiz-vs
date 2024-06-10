@@ -52,7 +52,7 @@ const Quiz = () => {
   const handleAnswerClick = (option) => {
     const currentQuestion = questions[currentQuestionIndex];
     const correctOption =
-      currentQuestion.options[currentQuestion.correctAnswer - 1];
+      currentQuestion.options[currentQuestion.correctAnswer - 1]; //1 based index
     const isCorrectAnswer = option === correctOption;
 
     setIsCorrect(isCorrectAnswer);

@@ -33,22 +33,53 @@ export default function Home() {
     <div className="min-h-screen flex flex-col justify-center items-center">
       <h1 className="text-l font-bold ">인간 VS GPT</h1>
       <h1 className="text-3xl font-bold mb-4">상식 퀴즈</h1>
-      <div className="mt-6">
+      <div className="mt-6 mb-6">
         <Player
           autoplay
           loop
-          src="/intro.json"
-          style={{ height: "200px", width: "200px" }}
+          src="/robot-lottie.json"
+          style={{ height: "100px", width: "100px" }}
         />
       </div>
-      <p className="mt-4 text-l">GPT가 틀린 상식들, 다 맞히실 수 있나요?</p>
+      <div role="alert" className="alert mb-4">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          className="stroke-info shrink-0 w-6 h-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <span className="text-s">GPT가 틀린 문제가 포함되어 있어요.</span>
+      </div>
+      <div role="alert" className="alert ">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          className="stroke-info shrink-0 w-6 h-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <span className="text-s">20문제, 약 3분 정도 걸려요.</span>
+      </div>
       <Link href="/quiz">
         <button className="btn btn-primary mt-6" onClick={handleStartQuiz}>
           퀴즈 풀기
           <FaArrowRight className="ml-1" />
         </button>
       </Link>
-      <p className="text-sm mt-2">20문제 / 약 3분 소요</p>
+      <p className="text-sm mt-2 mb-12">20문제 / 약 3분 소요</p>
     </div>
   );
 }

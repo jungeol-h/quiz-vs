@@ -1,19 +1,11 @@
 [
   {
-    "category": "정치",
-    "tag": "최다기출",
-    "difficulty": 0,
-    "question": "우리나라 대통령의 임기는 몇 년인가?",
-    "options": ["3년", "4년", "5년", "6년"],
-    "correctAnswer": 2
-  },
-  {
     "category": "경제",
     "tag": "최다기출",
     "difficulty": 0,
     "question": "20%의 상품 또는 상위 20% 고객이 총 매출의 80%를 차지한다는 경제 용어는?",
     "options": ["파레토 법칙", "롱테일 법칙", "멘델의 법칙", "메라비언 법칙"],
-    "correctAnswer": 0
+    "correctAnswer": 1
   },
   {
     "category": "사회",
@@ -26,7 +18,7 @@
       "피터팬 증후군",
       "스톡홀름 증후군"
     ],
-    "correctAnswer": 3
+    "correctAnswer": 4
   },
   {
     "category": "과학",
@@ -34,7 +26,7 @@
     "difficulty": 0,
     "question": "'여자 아이'라는 뜻을 가진 기후 이상 현상 용어는?",
     "options": ["넛지", "라니냐", "엘니뇨", "아그레망"],
-    "correctAnswer": 1
+    "correctAnswer": 2
   },
   {
     "category": "국제",
@@ -42,7 +34,7 @@
     "difficulty": 0,
     "question": "1993년 11월 1일 발효된 유럽통합조약에 따라 재탄생한 유럽공동체 연합 기구는?",
     "options": ["EU", "UN", "IMF", "TPP"],
-    "correctAnswer": 0
+    "correctAnswer": 3
   },
   {
     "category": "국제",
@@ -50,7 +42,7 @@
     "difficulty": 0,
     "question": "다음 중 G7 국가가 아닌 것은?",
     "options": ["미국", "독일", "캐나다", "러시아"],
-    "correctAnswer": 3
+    "correctAnswer": 4
   },
   {
     "category": "국제",
@@ -63,7 +55,7 @@
       "브라질 - 헤알",
       "러시아 - 루블"
     ],
-    "correctAnswer": 0
+    "correctAnswer": 1
   },
   {
     "category": "역사",
@@ -71,7 +63,7 @@
     "difficulty": 0,
     "question": "사서오경 중 사서에 해당되지 않는 것은?",
     "options": ["논어", "맹자", "중용", "춘추"],
-    "correctAnswer": 3
+    "correctAnswer": 4
   },
   {
     "category": "스포츠",
@@ -79,7 +71,7 @@
     "difficulty": 0,
     "question": "2022년 월드컵 개최국은?",
     "options": ["러시아", "카타르", "네덜란드", "아르헨티나"],
-    "correctAnswer": 1
+    "correctAnswer": 2
   },
   {
     "category": "경제",
@@ -87,7 +79,7 @@
     "difficulty": 0,
     "question": "세계적으로 가장 널리 쓰이는 온라인 가상화폐 명칭은?",
     "options": ["리플코인", "비트코인", "이더리움", "라이트코인"],
-    "correctAnswer": 1
+    "correctAnswer": 2
   },
   {
     "category": "사회",
@@ -95,7 +87,7 @@
     "difficulty": 0,
     "question": "다음 중 노동3권이 아닌 것은?",
     "options": ["단결권", "단체교섭권", "단체행동권", "단체결성권"],
-    "correctAnswer": 3
+    "correctAnswer": 4
   },
   {
     "category": "사회",
@@ -103,7 +95,7 @@
     "difficulty": 0,
     "question": "문화예술 스포츠 등에 대한 기업의 지원활동의 총칭은?",
     "options": ["메가", "메세나", "메라비언", "메르코수르"],
-    "correctAnswer": 1
+    "correctAnswer": 2
   },
   {
     "category": "사회",
@@ -111,7 +103,7 @@
     "difficulty": 0,
     "question": "이메일이나 위장된 홈페이지 등 가짜 정보를 매개로 사용자의 개인정보를 빼가는 수법은?",
     "options": ["피싱", "파밍", "스푸핑", "스미싱"],
-    "correctAnswer": 0
+    "correctAnswer": 1
   },
   {
     "category": "경제",
@@ -119,7 +111,7 @@
     "difficulty": 0,
     "question": "경기침체에도 불구하고 물가가 오히려 오르는 현상은?",
     "options": ["인플레이션", "디플레이션", "애그플레이션", "스태그플레이션"],
-    "correctAnswer": 3
+    "correctAnswer": 4
   },
   {
     "category": "국제",
@@ -127,7 +119,7 @@
     "difficulty": 0,
     "question": "중국의 시진핑 국가주석이 제안해 설립한 국제투자은행의 명칭은?",
     "options": ["IBRD", "AIIB", "ELS", "PPL"],
-    "correctAnswer": 1
+    "correctAnswer": 2
   },
   {
     "category": "국제",
@@ -135,7 +127,7 @@
     "difficulty": 0,
     "question": "교토의정서의 효력이 2020년 만료됨에 따라 이를 대체하는 협약은?",
     "options": ["런던협약", "바젤협약", "유엔기후변화협약", "파리기후변화협약"],
-    "correctAnswer": 3
+    "correctAnswer": 4
   },
   {
     "category": "국제",
@@ -143,7 +135,7 @@
     "difficulty": 0,
     "question": "영국의 유렵연합 탈퇴를 의미하는 용어는?",
     "options": ["그렉시트", "브렉시트", "스펙시트", "포렉시트"],
-    "correctAnswer": 1
+    "correctAnswer": 2
   },
   {
     "category": "사회",
@@ -151,7 +143,7 @@
     "difficulty": 0,
     "question": "타인의 기대나 관심을 받을 경우 그러한 기대에 부응하여 긍정적인 행태를 보이게 되는 현상은?",
     "options": ["호손 효과", "바넘 효과", "스티그마 효과", "피그말리온 효과"],
-    "correctAnswer": 3
+    "correctAnswer": 4
   },
   {
     "category": "사회",
@@ -159,7 +151,7 @@
     "difficulty": 0,
     "question": "4대 보험에 속하지 않는 것은?",
     "options": ["국민연금", "고용보험", "연금보험", "산재보험"],
-    "correctAnswer": 2
+    "correctAnswer": 3
   },
   {
     "category": "국제",
@@ -167,7 +159,7 @@
     "difficulty": 0,
     "question": "유로화를 쓰지 않는 국가는?",
     "options": ["독일", "덴마크", "프랑스", "벨기에"],
-    "correctAnswer": 1
+    "correctAnswer": 2
   },
   {
     "category": "문화",
@@ -175,7 +167,7 @@
     "difficulty": 0,
     "question": "다음 중 한국의 유네스코 유산이 아닌 것은?",
     "options": ["씨름", "연등회", "아리랑", "무예도보통지"],
-    "correctAnswer": 3
+    "correctAnswer": 4
   },
   {
     "category": "역사",
@@ -183,7 +175,7 @@
     "difficulty": 0,
     "question": "세종대왕이 훈민정음을 창제할 당시 글자 수는?",
     "options": ["26자", "27자", "28자", "29자"],
-    "correctAnswer": 2
+    "correctAnswer": 3
   },
   {
     "category": "문화",
@@ -191,7 +183,7 @@
     "difficulty": 0,
     "question": "미켈란젤로의 작품이 아닌 것은?",
     "options": ["동굴의 성모", "천지창조", "다비드상", "최후의 심판"],
-    "correctAnswer": 0
+    "correctAnswer": 1
   },
   {
     "category": "과학",
@@ -199,7 +191,7 @@
     "difficulty": 0,
     "question": "생물의 세포나 조직 등을 이용해 만드는 바이오의약품의 복제약은?",
     "options": ["제네릭", "카피약", "바이오CMO", "바이오시밀러"],
-    "correctAnswer": 3
+    "correctAnswer": 4
   },
   {
     "category": "스포츠",
@@ -212,7 +204,7 @@
       "프랑스 파리",
       "미국 로스엔젤레스"
     ],
-    "correctAnswer": 1
+    "correctAnswer": 2
   },
   {
     "category": "과학",
@@ -220,6 +212,6 @@
     "difficulty": 0,
     "question": "세계 최초의 인공위성은?",
     "options": ["살류트", "아나시스", "익스플로러", "스푸트니크"],
-    "correctAnswer": 3
+    "correctAnswer": 4
   }
 ]
