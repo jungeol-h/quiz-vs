@@ -186,7 +186,7 @@ const Quiz = () => {
                   style={{ borderBottomColor: "white" }}
                 ></div>
                 {isCorrect ? (
-                  <div>이걸 맞히네;;</div>
+                  <div>정답!!</div>
                 ) : (
                   <div>틀렸습니다. 정답은 {correctOption}입니다.</div>
                 )}
