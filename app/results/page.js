@@ -77,8 +77,8 @@ const Results = () => {
     sendGTMEvent("share_quiz", "click");
     const shareData = {
       title: ogTitle,
-      text: `[날먹상식] ${correctAnswersCount}개나 맞힌 이 분을 이겨보세요! 👊 https://nalmuk.com`,
-      url: "https://nalmuk.com/",
+      text: `[날먹상식] ${correctAnswersCount}개나 맞힌 이 분을 이겨보세요! 👊 https://nalmuk.com/?utm_source=quiz_app&utm_medium=share_button&utm_campaign=quiz_results`,
+      url: "https://nalmuk.com/?utm_source=quiz_app&utm_medium=share_button&utm_campaign=quiz_results",
     };
 
     if (navigator.share) {
