@@ -68,13 +68,17 @@ const Results = () => {
     alert("링크가 클립보드에 복사되었습니다. 친구에게 직접 공유해보세요!");
   };
   const handleRetakeQuiz = () => {
-    sendGTMEvent("retake_quiz");
+    sendGTMEvent({
+      event: "retake_quiz",
+    });
     localStorage.removeItem("quizResults");
     router.push("/quiz");
   };
 
   const handleShare = async () => {
-    sendGTMEvent("share_quiz");
+    sendGTMEvent({
+      event: "share_quiz",
+    });
     const shareData = {
       title: ogTitle,
       text: `[날먹상식] ${correctAnswersCount}개나 맞힌 이 분을 이겨보세요! 👊 https://nalmuk.com/?utm_source=quiz_app&utm_medium=share_button&utm_campaign=quiz_results`,
